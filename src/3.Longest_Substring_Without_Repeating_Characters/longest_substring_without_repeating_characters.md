@@ -10,7 +10,7 @@ Given a string, find the length of the longest substring without repeating chara
 然后从j开始判断j所在的字符与[i,j-1]窗口内有无重复字符，若无，则j右移，过程如下图；
 ![2](https://github.com/npujcong/leetcode-together/blob/master/src/3.Longest_Substring_Without_Repeating_Characters/imgs/2.jpg)
 
-如下图，j移动到d的位置
+如上图，j移动到d的位置
 
 ![3](https://github.com/npujcong/leetcode-together/blob/master/src/3.Longest_Substring_Without_Repeating_Characters/imgs/3.jpg)
 
