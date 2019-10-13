@@ -4,6 +4,9 @@
 
 using namespace std;
 
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#define min(a,b) (((a) > (b)) ? (b) : (a))
+
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
@@ -72,16 +75,37 @@ public:
         if (m > n)
             return findMedianSortedArrays2(nums2, nums1);
         
+        int LMax1,LMax2,RMin1,RMin2,c1,c2;
+        int ll = 0, rr = 2 * m;
+
+        while(ll <= rr)
+        {
+            c1 = (ll + rr)/2;
+            c2 = m+n-c1;
+
+            LMax1 = (c1 == 0) ? INT8_MIN : nums1[(c1-1)/2];
+            RMin1 = (c1 == 2 * m) ? INT8_MAX : nums1[c1/2];
+            LMax2 = (c2 == 0) ? INT8_MIN : nums2[(c2-1)/2];
+            RMin2 = (c2 == 2* n) ? INT8_MAX : nums2[c2/2];
+
+            if (LMax1 > RMin2)
+                rr = c1 - 1;
+            else if (LMax2 > RMin1)
+                ll = c1 + 1;
+            else
+                break;
+        }
+        return ((max(LMax1,LMax2) + min(RMin1,RMin2)) / 2.0);
     }
-}
+};
 
 int main()
 {
-    std::vector<int> v1 = {1,3,5,8};
-    std::vector<int> v2 = {2,4,6};
+    std::vector<int> v1 = {100};
+    std::vector<int> v2 = {101};
     double res;
-    Solution A;
-    res = A.findMedianSortedArrays(v1,v2);
+    Solution2 A;
+    res = A.findMedianSortedArrays2(v1,v2);
     cout << res << endl;
     return 0;
 }
