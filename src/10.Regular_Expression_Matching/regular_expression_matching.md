@@ -57,9 +57,7 @@ def isMatch(text, pattern) -> bool:
         # 发现 '*' 通配符
     else:
         return first_match and isMatch(text[1:], pattern[1:])
-'''
 
-'''
 if len(pattern) >= 2 and pattern[1] == '*':
     return isMatch(text, pattern[2:]) or \
             first_match and isMatch(text[1:], pattern)
