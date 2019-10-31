@@ -46,3 +46,5 @@ Output: false
 # Analyze
 ## Solution
 没什么思路，看解答。
+从两个普通字符串，到加入.这个字符，再加入*最后完成
+![](https://github.com/npujcong/leetcode-together/blob/master/src/4.Midian_Of_Two_Sorted_Arrays/imgs/1.png)
