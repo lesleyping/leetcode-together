@@ -54,18 +54,18 @@ def isMatch(text, pattern) -> bool:
     if not pattern: return not text
     first_match = bool(text) and pattern[0] in {text[0], '.'}
     if len(pattern) >= 2 and pattern[1] == '*':
-        # 发现 '*' 通配符
+        // 发现 '*' 通配符
     else:
         return first_match and isMatch(text[1:], pattern[1:])
 
 if len(pattern) >= 2 and pattern[1] == '*':
     return isMatch(text, pattern[2:]) or \
             first_match and isMatch(text[1:], pattern)
-# 解释：如果发现有字符和 '*' 结合，
-    # 或者匹配该字符 0 次，然后跳过该字符和 '*'
-    # 或者当 pattern[0] 和 text[0] 匹配后，移动 text
-
+// 解释：如果发现有字符和 '*' 结合，
+    // 或者匹配该字符 0 次，然后跳过该字符和 '*'
+    // 或者当 pattern[0] 和 text[0] 匹配后，移动 text
 '''
+
 可以看到，通过保留pattern中的'*'同时向后推移text，实现*与字符重复匹配多次的功能。
 举例如图：
 ![](https://github.com/npujcong/leetcode-together/blob/master/src/10.Regular_Expression_Matching/img/1.png)
