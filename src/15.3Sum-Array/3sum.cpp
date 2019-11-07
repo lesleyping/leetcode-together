@@ -6,6 +6,7 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > threeSum(vector<int>& nums) {
+        if(nums.size()<3) return {};
         vector<vector<int> > result;
         sort(nums.begin(), nums.end());
         for(int i = 0; i < (nums.size()-2); ++i)
@@ -22,6 +23,8 @@ public:
                     result.push_back({nums[i],nums[ll],nums[rr]});
                     ll++;
                     rr--;
+                    while(ll < rr && nums[ll] == nums[ll-1]) ll++;
+                    while(ll < rr && nums[rr] == nums[rr+1]) rr--;
                 }
                 else if(sum > 0)
                 {
