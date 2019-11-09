@@ -65,12 +65,52 @@ public:
     }
 };
 
-
+class Solution4{
+public:
+    int longestValidParentheses(string s){
+        int maxlen = 0;
+        int llnum = 0;
+        int rrnum = 0;
+        for(int i = 0; i < s.length(); i++){
+            if(s[i] == '('){
+                llnum++;
+            }
+            else{
+                rrnum++;
+            }
+            if(llnum == rrnum){
+                maxlen = max(maxlen, 2*rrnum);
+            }
+            else if(rrnum > llnum){
+                llnum = 0;
+                rrnum = 0;
+            }
+        }
+        llnum = 0;
+        rrnum = 0;
+        for(int i = s.length()-1; i>=0; i--){
+            if(s[i] == '('){
+                llnum++;
+            }
+            else{
+                rrnum++;
+            }
+            if(llnum == rrnum){
+                maxlen = max(maxlen, 2*rrnum);
+            }
+            else if(rrnum < llnum){
+                llnum = 0;
+                rrnum = 0;
+            }
+        }
+        return maxlen;
+    }
+};
 
 int main()
 {
     string s = "))()())";
-    Solution2 S;
+    Solution4 S;
     int res = S.longestValidParentheses(s);
     cout << res << endl;
     return 0;

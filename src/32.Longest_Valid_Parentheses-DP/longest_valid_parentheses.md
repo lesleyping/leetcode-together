@@ -22,3 +22,11 @@ Explanation: The longest valid parentheses substring is "()()"
 ## Solution2
 动态规划问题
 每一个位置生成当前的有效括号长度值。
+![1](https://github.com/npujcong/leetcode-together/blob/master/src/32.Longest_Valid_Parentheses-DP/img/1.png)
+
+## Solution3
+栈的方法不太能理解..
+之后再好好思考一下
+
+## Solution4
+左右扫描两边，思路大概可以理解。
