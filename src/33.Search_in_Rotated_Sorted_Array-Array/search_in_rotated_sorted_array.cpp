@@ -25,6 +25,35 @@ public:
     }
 };
 
+class Solution2 {
+public:
+    int search(vector<int>& nums, int target) {
+        int ll = 0;
+        int rr = nums.size() - 1;
+        while(ll <= rr){
+            int mid = ll + (rr - ll)/2;
+            if(nums[mid] == target) return mid;
+            if(nums[ll] <= nums[mid]){
+                if(nums[ll] > target || nums[mid] < target){
+                    ll = mid + 1;
+                }
+                else{
+                    rr = mid - 1;
+                }
+            }
+            else{
+                if(target < nums[ll] && target > nums[mid]){
+                    ll = mid + 1;
+                }
+                else{
+                    rr = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
+
 int main()
 {
     vector<int> nums = {4,5,6,7,0,1,2};

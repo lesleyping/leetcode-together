@@ -27,3 +27,6 @@ Output: -1
 判断[0,mid] 升序：nums[0] <= nums[mid]，当target < nums[0] || target > nums[0] 时，向后归约；
 判断[0,mid] 有旋转位：nums[0] > nums[mid]，当target < nums[0] && target > nums[mid] 时，向后归约；
 其余情况，向前归约
+
+## solution2
+判断left，mid和right之间的关系
