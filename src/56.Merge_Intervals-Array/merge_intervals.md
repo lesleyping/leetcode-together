@@ -14,6 +14,10 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 
 # Analyze
+- 用快排、插入排序、归并排序各写一遍（只有快排没有超时）
+- 两个区间，若第一个区间的末尾小于第二个区间的开头，则重叠
+
+# Analyze-old
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {

@@ -15,6 +15,8 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 
 # Analyze
+- 寻找到左端后，不断改变newInterval的值
+
 寻找左右插入点
 class Solution {
 public:
