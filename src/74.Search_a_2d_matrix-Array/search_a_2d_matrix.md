@@ -24,28 +24,12 @@ matrix = [
 target = 13
 Output: false
 
-# Analyze
+# Solution1
+左下角开始搜索
 
+# Solution2
+由于每行之间也有大小关系，这个方法比较符合题意
 没有发现是一道二分查找题
 看到搜索应该联想
-class Solution {
-public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        if(matrix.empty()) return false;
-        int ll = 0, mm = 0, rr = 0;
-        int m = matrix.size();
-        int n = matrix[0].size();
-
-
-        rr = m * n - 1;
-        while(ll <= rr){
-            mm = ll + (rr - ll)/2;
-            if(matrix[mm/n][mm%n] == target) return true;
-            else if(matrix[mm/n][mm%n] < target) ll = mm + 1;
-            else if(matrix[mm/n][mm%n] > target) rr = mm - 1;
-        }
-        return false;
-    }
-};
 
 
