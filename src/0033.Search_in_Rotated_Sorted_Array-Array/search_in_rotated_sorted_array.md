@@ -24,7 +24,7 @@ Output: -1
 # Analyze
 ## Solution
 时间复杂度要求为O(log n)，可以想到二分查找算法
-判断[0,mid] 升序：nums[0] <= nums[mid]，当target < nums[0] || target > nums[0] 时，向后归约；
+判断[0,mid] 升序：nums[0] <= nums[mid]，当target < nums[0] || target > nums[mid] 时，向后归约；
 判断[0,mid] 有旋转位：nums[0] > nums[mid]，当target < nums[0] && target > nums[mid] 时，向后归约；
 其余情况，向前归约
 
