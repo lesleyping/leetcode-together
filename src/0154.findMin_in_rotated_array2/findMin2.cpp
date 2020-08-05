@@ -32,3 +32,19 @@ public:
         return res;
     }
 };
+
+class Solution2 {
+public:
+    int findMin(vector<int>& nums) {
+        int ll = 0;
+        int rr = nums.size() - 1;
+        int mid = ll;
+        while(ll < rr){
+            mid = ll + (rr - ll) / 2;
+            if(nums[mid] < nums[rr]) rr = mid;
+            else if (nums[mid] > nums[rr]) ll = mid + 1;
+            else rr--;
+        }
+        return nums[ll];
+    }
+};
