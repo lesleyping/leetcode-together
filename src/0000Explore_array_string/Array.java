@@ -379,3 +379,98 @@ class Solution {
         return sum;
     }
 }
+//13
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int i = 0;
+        int j = numbers.length - 1;
+        while(i < j){
+            if (numbers[i] + numbers[j] < target){
+                i++;
+            }
+            else if (numbers[i] + numbers[j] > target){
+                j--;
+            }
+            else{
+                return new int[]{i+1, j+1};
+            }
+        }
+        return new int[]{-1, -1};
+    }
+}
+//14
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int slow = 0;
+        for(int i = 0; i < nums.length; i++){
+            if (nums[i] != val){
+                nums[slow++] = nums[i];
+            }
+        }
+        return slow;
+    }
+}
+//15
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int i = 0, j = 0;
+        int max = 0;
+        while(j < nums.length){
+            if (nums[j++] == 0){
+                max = Math.max(max, j - 1 - i);
+                i = j;
+            }
+        }
+        return Math.max(max, j - i);
+    }
+}
+//16
+class Solution {
+    public int minSubArrayLen(int s, int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int sum = 0;
+        int l = 0, r = 0;
+        while (r < nums.length){
+            sum += nums[r];
+            r++;
+            while(sum >= s){
+                min = Math.min(min, r - l);
+                sum -= nums[l++];
+            }
+        }
+        return min == Integer.MAX_VALUE ? 0 : min;
+    }
+}
+//17
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res= new ArrayList<>();
+        for (int i = 0; i < numRows; i++){
+            res.add(new ArrayList<>());
+            for (int j = 0; j < i+1; j++){
+                if (j == 0 || j == i){
+                    res.get(i).add(1);
+                }
+                else{
+                    res.get(i).add(res.get(i-1).get(j-1) + res.get(i-1).get(j));
+                }
+            }
+        }
+
+        return res;
+    }
+}
+//18.
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> res = new ArrayList<>();
+        res.add(1);
+        for (int i = 1; i <= rowIndex; i++){
+            for (int j = i - 1; j > 0; j--){
+                res.set(j, res.get(j - 1) + res.get(j));
+            }
+            res.add(1);
+        }
+        return res;
+    }
+}
