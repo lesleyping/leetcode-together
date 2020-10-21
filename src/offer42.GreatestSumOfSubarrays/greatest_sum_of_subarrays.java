@@ -32,3 +32,21 @@ public class Solution {
         return res;
     }
 }
+
+//=========second
+public class Solution {
+    public int FindGreatestSumOfSubArray(int[] array) {
+        int l = 0, r = 0;
+        int sum = 0;
+        int max = Integer.MIN_VALUE;
+        while(r < array.length){
+            sum += array[r++];
+            max = Math.max(max, sum);
+            if(sum <= 0){
+                l = r;
+                sum = 0;
+            }
+        }
+        return max;
+    }
+}

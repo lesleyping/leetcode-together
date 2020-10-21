@@ -1,3 +1,4 @@
+//=======first
 //1
 import java.util.*;
 public class Solution {
@@ -74,3 +75,50 @@ public class Solution {
         return res;
     }
 }
+
+
+//==========second
+import java.util.*;
+public class Solution {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if(input == null || input.length == 0 || input.length < k || k == 0){
+            return res;
+        }
+        int start = 0, end = input.length - 1;
+        int index = partition(input, start, end);
+        while(index != k-1){
+            if(index < (k-1)){
+                start = index + 1;
+                index = partition(input, start, end);
+            }else{
+                end = index - 1;
+                index = partition(input, start, end);
+            }
+        }
+        for(int i = 0; i < k; i++){
+            res.add(input[i]);
+        }
+        return res;
+    }
+    public int partition(int[] arr, int l, int r){
+        int less = l-1, more = r;
+        while(l < more){
+            if(arr[l] < arr[r]){
+                swap(arr, ++less, l++);
+            }else if(arr[l] > arr[r]){
+                swap(arr, --more, l);
+            }else{
+                l++;
+            }
+        }
+        swap(arr, l, r);
+        return l;
+    }
+    private void swap(int[] arr, int i, int j){
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+}
+
