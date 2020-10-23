@@ -15,3 +15,26 @@ public class Solution {
         return -1;
     }
 }
+
+//--------second
+//hashmap效率没有数组高
+import java.util.*;
+public class Solution {
+    public int FirstNotRepeatingChar(String str) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int len = str.length();
+        for(int i = 0; i < len; i++){
+            if(map.containsKey(str.charAt(i) - 'a')){
+                map.put(str.charAt(i) - 'a', -1);
+            }else{
+                map.put(str.charAt(i) - 'a', i);
+            }
+        }
+        for(int i = 0; i < len; i++){
+            if(map.get(str.charAt(i) - 'a') != -1){
+                return i;
+            }
+        }
+        return -1;
+    }
+}

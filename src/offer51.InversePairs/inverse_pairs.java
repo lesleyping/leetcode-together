@@ -41,3 +41,54 @@ public class Solution {
         return count;
     }
 }
+
+//------second
+public class Solution {
+    public int InversePairs(int [] array) {
+        int res = sort(array, 0, array.length-1);
+        return res;
+    }
+    private int sort(int[] arr, int start, int end){
+        if(start >= end){
+            return 0;
+        }
+        int mid = start + (end - start) / 2;
+        int left = sort(arr, start, mid);
+        left = left % 1000000007;
+        int right = sort(arr, mid+1, end);
+        right = right % 1000000007;
+        int merge = merge(arr, start, mid, end);
+        merge = merge % 1000000007;
+        return (left + right + merge)%1000000007;
+    }
+    private int merge(int[] arr, int left, int mid, int right){
+        int res = 0;
+        int[] help = new int[right - left + 1];
+        int i = 0;
+        int p1 = left;
+        int p2 = mid + 1;
+        while(p1 <= mid && p2 <= right){
+            if(arr[p1] > arr[p2]){
+                help[i++] = arr[p2++];
+                res += mid - p1 + 1;
+                res = res % 1000000007;
+            }else{
+                help[i++] = arr[p1++];
+            }
+        }
+        if(p1 > mid){
+            while(p2 <= right){
+                help[i++] = arr[p2++];
+            }
+        }else if(p2 > right){
+            while(p1 <= mid){
+                help[i++] = arr[p1++];
+            }
+        }
+        
+        for(int t = 0; t < right - left + 1; t++){
+            arr[t+left] = help[t];
+        }
+        return res;
+    }
+}

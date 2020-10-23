@@ -19,11 +19,15 @@ public class Solution {
         int first = str.charAt(index) - '0';
         int res = 0;
         if(first > 1){
+            //最高位不是1 ，结果为10000（19999-10000），
             res += exp(len-1);
         }else if(first == 1){
+            //最高位（1234）为1，结果是235
             res += 1 + Integer.parseInt(str.substring(index+1));
         }
+        //（除去最高位，其余每位取1，其他位置可以任意选10个数）
         res += first * (len - 1) * exp(len - 2);
+        //去掉最高位后的递归
         res += getNumberOf1(str, index+1);
         return res;
     }
@@ -46,10 +50,13 @@ public class Solution {
         int res = 0;
         while(high != 0 || cur != 0){
             if(cur == 1){
+                //该位为1时，左右来决定
                 res += high * digit + low + 1;
             }else if(cur == 0){
+                //该位为0时，左决定
                 res += high * digit;
             }else if(cur > 1 && cur < 10){
+                //其他情况，左决定
                 res += (high + 1) * digit;
             }
             low += cur * digit;
@@ -60,3 +67,5 @@ public class Solution {
         return res;
     }
 }
+
+//-------------second
