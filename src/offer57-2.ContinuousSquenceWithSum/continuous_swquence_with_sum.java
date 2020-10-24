@@ -30,3 +30,31 @@ public class Solution {
         return res;
     }
 }
+//--------second
+import java.util.ArrayList;
+public class Solution {
+    ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+    public ArrayList<ArrayList<Integer> > FindContinuousSequence(int sum) {
+        int left = 1, right = 2;
+        while(right <= (sum + 1) / 2){
+            int curSum = getSum(left, right);
+            if(curSum == sum){
+                ArrayList<Integer> cur = new ArrayList<>();
+                for(int i = left; i <= right; i++){
+                    cur.add(i);
+                }
+                res.add(cur);
+                left++;
+            }else if(curSum < sum){
+                right++;
+            }else{
+                left++;
+            }
+        }
+        return res;
+    }
+    private int getSum(int left, int right){
+        int res = (left + right) * (right - left + 1) / 2;
+        return res;
+    }
+}
