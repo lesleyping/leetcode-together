@@ -104,3 +104,68 @@ public class Solution {
         return root;
   }
 }
+
+//---------second
+/*
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+
+}
+*/
+import java.util.*;
+public class Solution {
+    String Serialize(TreeNode root) {
+        if(root == null){
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            TreeNode cur = q.poll();
+            if(cur == null){
+                sb.append("null,");
+            }else{
+                sb.append(cur.val + ",");
+                q.offer(cur.left);
+                q.offer(cur.right);
+            }
+        }
+        return sb.deleteCharAt(sb.length()-1).toString();
+  }
+    TreeNode Deserialize(String str) {
+        if(str == null || str.length() == 0){
+            return null;
+        }
+        String[] arr = str.split(",");
+        TreeNode head = new TreeNode(Integer.parseInt(arr[0]));
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(head);
+        int idx = 1;
+        while(!q.isEmpty()){
+            TreeNode cur = q.poll();
+            if("null".equals(arr[idx])){
+                cur.left = null;
+            }else{
+                cur.left = new TreeNode(Integer.parseInt(arr[idx]));
+                q.offer(cur.left);
+            }
+            idx++;
+            if("null".equals(arr[idx])){
+                cur.right = null;
+            }else{
+                cur.right = new TreeNode(Integer.parseInt(arr[idx]));
+                q.offer(cur.right);
+            }
+            idx++;
+        }
+        return head;
+  }
+}
