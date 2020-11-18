@@ -1,4 +1,5 @@
-//1
+//1 -- ?好像不对
+// 最后的循环对于[2,1,0] [1,2,0]的结果有问题
 import java.util.ArrayList;
 import java.util.*;
 public class Solution {

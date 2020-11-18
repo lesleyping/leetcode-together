@@ -34,7 +34,8 @@ public class Solution {
         return res;
     }
 }
-//2-BFS
+//2-BFS     好像不对！！！！
+// [0,2,4,1,null,3,-1,5,1,null,6,null,8]
 import java.util.*;
 /**
 public class TreeNode {

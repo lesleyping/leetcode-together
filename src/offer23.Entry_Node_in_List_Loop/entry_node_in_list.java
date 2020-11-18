@@ -96,3 +96,40 @@ public class Solution {
         return p1;
     }
 }
+//直接移位fast到开始节点，因为相遇点
+
+/*
+ public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+*/
+public class Solution {
+
+    public ListNode EntryNodeOfLoop(ListNode pHead)
+    {
+        if (pHead == null || pHead.next == null) {
+            return null;
+        }
+        ListNode slow = pHead;
+        ListNode fast = pHead;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+            fast = fast.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+        fast = pHead;
+        while (fast != slow) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
+}

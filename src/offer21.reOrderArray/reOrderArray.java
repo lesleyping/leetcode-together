@@ -1,4 +1,4 @@
-//稳定-快排
+//稳定-插入排序？
 public class Solution {
     public void reOrderArray(int [] array) {
         int len = array.length;
