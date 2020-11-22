@@ -68,4 +68,23 @@ public class Solution {
     }
 }
 
-//-------------second
+//-------------third
+class Solution {
+    public int countDigitOne(int n) {
+        return getCount(n);   
+    }
+    private int getCount(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        String value = String.valueOf(n);
+        int high = value.charAt(0) - '0';
+        int pow = (int)Math.pow(10,value.length()-1);
+        int last = n - high * pow;
+        if (high == 1) {
+            return getCount(pow - 1) + getCount(last) + last + 1;
+        } else {
+            return high * getCount(pow - 1) + getCount(last) + pow ;
+        }
+    }
+}

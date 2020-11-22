@@ -30,3 +30,22 @@ class Solution {
         return a;
     }
 }
+
+//------third
+class Solution {
+    public int translateNum(int num) {
+        int res = 0;
+        res = dfs(String.valueOf(num), 0);
+        return res;
+    }
+    private int dfs(String num, int idx) {
+        if (idx == num.length()) {
+            return 1;
+        }
+        if (num.charAt(idx) != '0' && (idx + 1) < num.length() && Integer.valueOf(num.substring(idx, idx + 2)) < 26) {
+            return dfs(num, idx + 1) + dfs(num, idx + 2);
+        } else {
+            return dfs(num, idx + 1);
+        }
+    }
+}
