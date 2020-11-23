@@ -19,6 +19,7 @@ public class Solution {
 }
 //-------second
 //直接递归了
+// 不对！！
 public class Solution {
     public boolean IsBalanced_Solution(TreeNode root) {
         if(root == null){
